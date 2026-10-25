@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>SOP Kỹ Thuật: Quy Trình Đóng Gói Video Vox Style Talk To Earn</title>
   <style>
     :root {
@@ -36,9 +39,11 @@
 
     html, body {
       width: 100%;
-      max-width: 100vw;
+      max-width: 100%;
       overflow-x: hidden !important;
       position: relative;
+      touch-action: pan-y;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
@@ -62,6 +67,7 @@
       top: 0;
       z-index: 1000;
       width: 100%;
+      box-sizing: border-box;
     }
 
     .header-inner {
@@ -72,6 +78,8 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .header-title-group {
@@ -109,6 +117,8 @@
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
       max-width: 100%;
+      position: relative;
+      box-sizing: border-box;
     }
 
     .page-nav-bar::-webkit-scrollbar {
@@ -142,14 +152,13 @@
 
     /* MAIN STAGE */
     .main-stage {
-      flex: 1;
       max-width: 1200px;
       width: 100%;
       margin: 16px auto;
       padding: 0 16px;
-      display: flex;
-      flex-direction: column;
       box-sizing: border-box;
+      touch-action: pan-y;
+      min-height: 480px;
     }
 
     /* MOBILE SWIPE HINT */
@@ -175,10 +184,13 @@
       box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
       width: 100%;
       box-sizing: border-box;
+      min-height: 400px;
     }
 
     .page-sheet.active {
       display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
     }
 
     .page-header-row {
@@ -234,6 +246,9 @@
       padding: 20px;
       background: #ffffff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      min-width: 0;
+      box-sizing: border-box;
+      word-break: break-word;
     }
 
     .info-card.highlight {
@@ -258,6 +273,8 @@
       margin-bottom: 18px;
       overflow: hidden;
       background: #ffffff;
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .error-header {
@@ -335,11 +352,22 @@
       padding: 14px 16px;
       border-radius: 8px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 12.5px;
+      font-size: 12px;
       margin-top: 10px;
       position: relative;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .code-box code {
+      white-space: pre-wrap;
+      word-break: break-all;
+      display: block;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: 1.5;
     }
 
     .btn-copy {
@@ -1152,23 +1180,28 @@
     const totalPages = 6;
 
     function updateView() {
-      // Hide all sheets
+      // Toggle page sheets with both class and explicit inline style for maximum robustness
       for (let i = 1; i <= totalPages; i++) {
         const sheet = document.getElementById('page' + i);
-        if (sheet) sheet.classList.remove('active');
+        if (sheet) {
+          if (i === currentPage) {
+            sheet.classList.add('active');
+            sheet.style.display = 'block';
+          } else {
+            sheet.classList.remove('active');
+            sheet.style.display = 'none';
+          }
+        }
       }
-      // Show current sheet
-      const currentSheet = document.getElementById('page' + currentPage);
-      if (currentSheet) currentSheet.classList.add('active');
 
-      // Update tabs and scroll ONLY the tab bar container
+      // Update tabs and smoothly center the active tab inside topNav container ONLY
       const navBar = document.getElementById('topNav');
       const tabs = document.querySelectorAll('.tab-btn');
       tabs.forEach((tab, index) => {
         if (index + 1 === currentPage) {
           tab.classList.add('active');
           if (navBar) {
-            const scrollOffset = tab.offsetLeft - (navBar.clientWidth / 2) + (tab.clientWidth / 2);
+            const scrollOffset = tab.offsetLeft - (navBar.clientWidth / 2) + (tab.offsetWidth / 2);
             navBar.scrollTo({ left: Math.max(0, scrollOffset), behavior: 'smooth' });
           }
         } else {
@@ -1190,8 +1223,8 @@
       document.getElementById('prevBtn').disabled = (currentPage === 1);
       document.getElementById('nextBtn').disabled = (currentPage === totalPages);
 
-      // Scroll strictly to top of page without touching horizontal axis
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      // Force instant scroll reset to top-left of page
+      window.scrollTo(0, 0);
     }
 
     function goToPage(page) {
