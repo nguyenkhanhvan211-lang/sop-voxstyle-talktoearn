@@ -34,6 +34,13 @@
       padding: 0;
     }
 
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden !important;
+      position: relative;
+    }
+
     body {
       font-family: var(--font);
       background-color: var(--bg);
@@ -49,11 +56,12 @@
     .app-header {
       background: #0f172a;
       color: white;
-      padding: 12px 24px;
+      padding: 12px 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       position: sticky;
       top: 0;
       z-index: 1000;
+      width: 100%;
     }
 
     .header-inner {
@@ -63,7 +71,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .header-title-group {
@@ -77,7 +85,7 @@
       color: white;
       font-weight: 800;
       font-size: 11px;
-      padding: 4px 8px;
+      padding: 3px 8px;
       border-radius: 6px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
@@ -85,7 +93,7 @@
     }
 
     .header-title {
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 700;
       color: #f8fafc;
     }
@@ -93,13 +101,14 @@
     /* NAV TABS */
     .page-nav-bar {
       display: flex;
-      gap: 4px;
+      gap: 5px;
       background: rgba(255, 255, 255, 0.08);
       padding: 4px;
       border-radius: 10px;
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
+      max-width: 100%;
     }
 
     .page-nav-bar::-webkit-scrollbar {
@@ -136,10 +145,11 @@
       flex: 1;
       max-width: 1200px;
       width: 100%;
-      margin: 20px auto;
-      padding: 0 20px;
+      margin: 16px auto;
+      padding: 0 16px;
       display: flex;
       flex-direction: column;
+      box-sizing: border-box;
     }
 
     /* MOBILE SWIPE HINT */
@@ -161,18 +171,14 @@
       background: var(--card-bg);
       border-radius: 16px;
       border: 1px solid var(--border);
-      padding: 32px;
+      padding: 28px;
       box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
-      animation: fadeIn 0.2s ease-out forwards;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .page-sheet.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
+      display: block !important;
     }
 
     .page-header-row {
@@ -180,12 +186,13 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 16px;
-      margin-bottom: 24px;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      gap: 10px;
     }
 
     .page-header-row h2 {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: 800;
       color: #0f172a;
       display: flex;
@@ -208,7 +215,7 @@
       font-weight: 700;
       color: var(--text-muted);
       background: #f1f5f9;
-      padding: 5px 12px;
+      padding: 4px 12px;
       border-radius: 9999px;
       white-space: nowrap;
     }
@@ -216,15 +223,15 @@
     /* GRIDS & CARDS */
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
-      gap: 20px;
-      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 18px;
+      margin-top: 14px;
     }
 
     .info-card {
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 22px;
+      padding: 20px;
       background: #ffffff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
@@ -235,10 +242,10 @@
     }
 
     .card-title {
-      font-size: 16.5px;
+      font-size: 16px;
       font-weight: 700;
       color: #0f172a;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -248,13 +255,14 @@
     .error-block {
       border: 1px solid var(--border);
       border-radius: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       overflow: hidden;
+      background: #ffffff;
     }
 
     .error-header {
       background: #f8fafc;
-      padding: 12px 18px;
+      padding: 12px 16px;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
@@ -263,7 +271,7 @@
     }
 
     .error-title {
-      font-size: 15.5px;
+      font-size: 15px;
       font-weight: 700;
       color: #0f172a;
     }
@@ -282,10 +290,10 @@
     .tag-outro { background: #fef3c7; color: #b45309; }
 
     .error-body {
-      padding: 18px;
+      padding: 16px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
 
     .box-fault {
@@ -324,7 +332,7 @@
     .code-box {
       background: #0f172a;
       color: #e2e8f0;
-      padding: 14px 18px;
+      padding: 14px 16px;
       border-radius: 8px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 12.5px;
@@ -361,9 +369,9 @@
 
     ul.check-list li {
       position: relative;
-      padding-left: 24px;
-      margin-bottom: 10px;
-      font-size: 14px;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      font-size: 13.5px;
       color: var(--text);
     }
 
@@ -379,9 +387,9 @@
     .callout-box {
       border-left: 4px solid var(--accent);
       background: #fff7ed;
-      padding: 14px 18px;
+      padding: 12px 16px;
       border-radius: 0 8px 8px 0;
-      margin: 16px 0;
+      margin: 14px 0;
       font-size: 13.5px;
       color: #9a3412;
     }
@@ -390,46 +398,81 @@
       color: #7c2d12;
     }
 
-    /* TABLE RESPONSIVE WRAPPER */
-    .table-responsive {
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      margin-top: 12px;
-    }
-
-    table {
+    /* DESKTOP TABLE & MOBILE CARD VIEW */
+    .table-desktop {
       width: 100%;
       border-collapse: collapse;
       font-size: 13.5px;
+      margin-top: 10px;
     }
 
-    th, td {
+    .table-desktop th, .table-desktop td {
       padding: 12px 14px;
       border-bottom: 1px solid var(--border);
       text-align: left;
     }
 
-    th {
+    .table-desktop th {
       background: #f1f5f9;
       color: #0f172a;
       font-weight: 700;
     }
 
-    tr:hover {
+    .table-desktop tr:hover {
       background: #f8fafc;
+    }
+
+    .pipeline-mobile-list {
+      display: none;
+    }
+
+    .pipeline-step-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .pipeline-step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .pipeline-step-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 13.5px;
+    }
+
+    .pipeline-step-badge {
+      background: #eff6ff;
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .pipeline-step-desc {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
     }
 
     /* BOTTOM CONTROLLER */
     .bottom-controller {
       max-width: 1200px;
       width: 100%;
-      margin: 0 auto 24px auto;
-      padding: 0 20px;
+      margin: 0 auto 20px auto;
+      padding: 0 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
+      box-sizing: border-box;
     }
 
     .ctrl-btn {
@@ -437,14 +480,14 @@
       border: 1px solid var(--border);
       color: var(--text);
       font-weight: 700;
-      font-size: 13.5px;
-      padding: 10px 20px;
-      border-radius: 10px;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .ctrl-btn:hover:not(:disabled) {
@@ -454,19 +497,19 @@
     }
 
     .ctrl-btn:disabled {
-      opacity: 0.4;
+      opacity: 0.35;
       cursor: not-allowed;
     }
 
     .page-dots {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
     }
 
     .dot {
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       background: #cbd5e1;
       border-radius: 50%;
       cursor: pointer;
@@ -475,15 +518,15 @@
 
     .dot.active {
       background: var(--accent);
-      width: 24px;
+      width: 22px;
       border-radius: 8px;
     }
 
     footer {
       text-align: center;
-      padding: 20px 0;
+      padding: 16px 0;
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
     /* =========================================
@@ -495,13 +538,13 @@
       }
 
       .app-header {
-        padding: 10px 14px;
+        padding: 8px 12px;
       }
 
       .header-inner {
         flex-direction: column;
         align-items: stretch;
-        gap: 8px;
+        gap: 6px;
       }
 
       .header-title-group {
@@ -509,22 +552,22 @@
       }
 
       .header-title {
-        font-size: 14px;
+        font-size: 13.5px;
       }
 
       .badge-sop {
-        font-size: 10px;
-        padding: 3px 6px;
+        font-size: 9.5px;
+        padding: 2px 6px;
       }
 
       .page-nav-bar {
-        padding: 3px;
-        gap: 4px;
+        padding: 2px;
+        gap: 3px;
       }
 
       .tab-btn {
-        padding: 6px 11px;
-        font-size: 11.5px;
+        padding: 5px 9px;
+        font-size: 11px;
       }
 
       .mobile-swipe-hint {
@@ -532,105 +575,117 @@
       }
 
       .main-stage {
-        margin: 10px auto;
+        margin: 8px auto;
         padding: 0 10px;
       }
 
       .page-sheet {
-        padding: 18px 14px;
-        border-radius: 14px;
+        padding: 16px 12px;
+        border-radius: 12px;
       }
 
       .page-header-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
-        padding-bottom: 12px;
-        margin-bottom: 16px;
+        gap: 6px;
+        padding-bottom: 10px;
+        margin-bottom: 14px;
       }
 
       .page-header-row h2 {
-        font-size: 16.5px;
+        font-size: 16px;
         line-height: 1.35;
       }
 
       .badge-page {
         font-size: 11px;
-        padding: 2px 6px;
+        padding: 2px 5px;
       }
 
       .page-counter {
         font-size: 11px;
-        padding: 3px 10px;
+        padding: 2px 8px;
         align-self: flex-start;
       }
 
       .grid-2 {
         grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 12px;
+        gap: 12px;
+        margin-top: 10px;
       }
 
       .info-card {
-        padding: 16px 14px;
+        padding: 14px 12px;
       }
 
       .card-title {
-        font-size: 15px;
+        font-size: 14.5px;
       }
 
       .error-block {
-        margin-bottom: 16px;
+        margin-bottom: 14px;
       }
 
       .error-header {
-        padding: 10px 12px;
+        padding: 9px 12px;
         flex-wrap: wrap;
         gap: 6px;
       }
 
       .error-title {
-        font-size: 13.5px;
-        line-height: 1.4;
+        font-size: 13px;
+        line-height: 1.35;
       }
 
       .error-body {
         grid-template-columns: 1fr;
-        padding: 12px;
-        gap: 10px;
+        padding: 10px 12px;
+        gap: 8px;
       }
 
       .box-fault, .box-solution {
-        padding: 10px 12px;
-        font-size: 12.5px;
+        padding: 9px 11px;
+        font-size: 12px;
       }
 
       .box-fault strong, .box-solution strong {
-        font-size: 13px;
+        font-size: 12.5px;
       }
 
       .code-box {
-        font-size: 11.5px;
-        padding: 12px 14px;
-        padding-top: 36px;
+        font-size: 11px;
+        padding: 10px 12px;
+        padding-top: 32px;
       }
 
       .btn-copy {
-        top: 8px;
-        right: 8px;
-        padding: 3px 8px;
-        font-size: 10.5px;
+        top: 6px;
+        right: 6px;
+        padding: 3px 7px;
+        font-size: 10px;
       }
 
       .callout-box {
-        padding: 10px 14px;
-        font-size: 12.5px;
-        margin: 12px 0;
+        padding: 10px 12px;
+        font-size: 12px;
+        margin: 10px 0;
       }
 
       ul.check-list li {
-        font-size: 13px;
-        margin-bottom: 8px;
+        font-size: 12.5px;
+        margin-bottom: 6px;
+      }
+
+      /* Switch table to card list on mobile */
+      .table-desktop {
+        display: none !important;
+      }
+
+      .pipeline-mobile-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
       }
 
       /* Sticky Mobile Bottom Navigation Bar */
@@ -641,7 +696,7 @@
         right: 0;
         max-width: 100%;
         margin: 0;
-        padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) 14px;
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
         background: rgba(255, 255, 255, 0.96);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
@@ -651,8 +706,8 @@
       }
 
       .ctrl-btn {
-        padding: 10px 12px;
-        font-size: 12px;
+        padding: 8px 12px;
+        font-size: 11.5px;
         flex: 1;
         justify-content: center;
         border-radius: 8px;
@@ -660,35 +715,21 @@
 
       .page-dots {
         flex-shrink: 0;
-        gap: 5px;
+        gap: 4px;
       }
 
       .dot {
-        width: 6px;
-        height: 6px;
+        width: 5px;
+        height: 5px;
       }
 
       .dot.active {
-        width: 16px;
-      }
-
-      .table-responsive {
-        margin: 10px -14px;
-        padding: 0 14px;
-      }
-
-      table {
-        font-size: 12px;
-        min-width: 520px;
-      }
-
-      th, td {
-        padding: 9px 10px;
+        width: 14px;
       }
 
       footer {
-        padding: 16px 0 20px 0;
-        font-size: 12px;
+        padding: 12px 0 16px 0;
+        font-size: 11px;
       }
     }
   </style>
@@ -817,7 +858,7 @@
       <div class="grid-2">
         <div class="info-card highlight">
           <h3 class="card-title">🎥 1. Video B-Roll Cá Nhân ("Chiến Lược Quen Mặt")</h3>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px;">
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">
             Đặc điểm cốt lõi của video cá nhân chèn vào Vox Style:
           </p>
           <ul class="check-list">
@@ -866,7 +907,7 @@
       <div class="grid-2">
         <div class="info-card">
           <h3 class="card-title">📝 Mô-Đun 1: Sano Ear-First Refiner</h3>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px;">
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">
             Chuyển hóa tài liệu sách vở thành văn phong "để nghe bằng tai":
           </p>
           <ul class="check-list">
@@ -879,7 +920,7 @@
 
         <div class="info-card highlight">
           <h3 class="card-title">🔬 Mô-Đun 2: Fast-Track Fact-Checking Gate</h3>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px;">
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">
             Kiểm định tính chuẩn xác ngôn ngữ học và khoa học trị liệu:
           </p>
           <ul class="check-list">
@@ -890,7 +931,7 @@
         </div>
       </div>
 
-      <div class="callout-box" style="margin-top: 20px;">
+      <div class="callout-box" style="margin-top: 16px;">
         <strong>Quy Trình Duyệt:</strong> Tài liệu thô → Chạy qua Sano Refiner → Chạy qua Fast-Track Fact-Check → Xuất ra <code>narration.txt</code> chuẩn để chị Vân bật mic thu âm.
       </div>
     </div>
@@ -925,7 +966,7 @@
         </div>
       </div>
 
-      <div class="code-box" style="margin-top: 18px;">
+      <div class="code-box" style="margin-top: 16px;">
         <button class="btn-copy" onclick="copyCode(this)">Copy Lệnh Xử Lý Audio</button>
         <code>ffmpeg -y -i voice.m4a -i music.mp3 -filter_complex "[1:a]volume=0.14,atrim=0:126.8,afade=t=out:st=124.5:d=2.2[bgm];[0:a]apad=pad_dur=4.2[vpad];[vpad][bgm]amix=inputs=2:duration=first:dropout_transition=2:normalize=0[aout]" -map "[aout]" -c:a aac -b:a 192k master_audio.aac</code>
       </div>
@@ -962,7 +1003,7 @@
         </div>
       </div>
 
-      <div class="callout-box" style="margin-top: 18px;">
+      <div class="callout-box" style="margin-top: 16px;">
         <strong>Quy Chuẩn Bàn Giao Khâu Cuối:</strong> Hệ thống bắt buộc xuất đủ <strong>Bộ Đôi</strong>: File video hoàn chỉnh <code>.mp4</code> + File ảnh bìa <code>.jpg</code> kèm tài liệu kịch bản đăng bài và bộ hashtag SEO.
       </div>
     </div>
@@ -974,53 +1015,103 @@
         <span class="page-counter">Trang 6 / 6</span>
       </div>
 
-      <p style="color: var(--text-muted); margin-bottom: 14px;">Sơ đồ luồng dữ liệu tự động hóa khép kín từ Folder đầu vào đến kết quả xuất bản:</p>
+      <p style="color: var(--text-muted); margin-bottom: 12px; font-size: 13.5px;">Sơ đồ luồng dữ liệu tự động hóa khép kín từ Folder đầu vào đến kết quả xuất bản:</p>
 
-      <div class="table-responsive">
-        <table>
-          <thead>
-            <tr>
-              <th>Giai Đoạn</th>
-              <th>Thao Tác Thực Hiện</th>
-              <th>Cơ Chế Tự Động Hóa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>1. Chuẩn Bị Data</strong></td>
-              <td>Nạp Script.txt + Voice.m4a + Video B-roll + Ảnh</td>
-              <td>Người dùng đưa vào thư mục dự án</td>
-            </tr>
-            <tr>
-              <td><strong>2. Lọc Kịch Bản</strong></td>
-              <td>Ép câu &lt;35 chữ, khử số liệu ảo, bẫy lỗi phát âm</td>
-              <td>Sano Script Refiner + Fast-Track Fact-Check</td>
-            </tr>
-            <tr>
-              <td><strong>3. Xử Lý Audio</strong></td>
-              <td>Tắt tiếng B-roll, ghép BGM Piano vol 0.14, fade-out 2.2s</td>
-              <td>FFmpeg filter complex (normalize=0)</td>
-            </tr>
-            <tr>
-              <td><strong>4. Render Video</strong></td>
-              <td>Dựng canvas giấy, ghim B-roll Polaroid, phụ đề Y=1620</td>
-              <td>Python Pillow + FFmpeg Pipe (>100 fps)</td>
-            </tr>
-            <tr>
-              <td><strong>5. Ghép Outro</strong></td>
-              <td>Nối 4s cuối với TalkToEarn_Outro_Chuan.jpg + Zoom 1.03</td>
-              <td>Ken Burns Engine + Music Fade</td>
-            </tr>
-            <tr>
-              <td><strong>6. Xuất Bản</strong></td>
-              <td>Video MP4 1080x1920 + Thumbnail 9:16 + Caption/Hashtags</td>
-              <td>Đóng gói bàn giao khâu cuối (Dual Delivery)</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- DESKTOP TABLE -->
+      <table class="table-desktop">
+        <thead>
+          <tr>
+            <th>Giai Đoạn</th>
+            <th>Thao Tác Thực Hiện</th>
+            <th>Cơ Chế Tự Động Hóa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Chuẩn Bị Data</strong></td>
+            <td>Nạp Script.txt + Voice.m4a + Video B-roll + Ảnh</td>
+            <td>Người dùng đưa vào thư mục dự án</td>
+          </tr>
+          <tr>
+            <td><strong>2. Lọc Kịch Bản</strong></td>
+            <td>Ép câu &lt;35 chữ, khử số liệu ảo, bẫy lỗi phát âm</td>
+            <td>Sano Script Refiner + Fast-Track Fact-Check</td>
+          </tr>
+          <tr>
+            <td><strong>3. Xử Lý Audio</strong></td>
+            <td>Tắt tiếng B-roll, ghép BGM Piano vol 0.14, fade-out 2.2s</td>
+            <td>FFmpeg filter complex (normalize=0)</td>
+          </tr>
+          <tr>
+            <td><strong>4. Render Video</strong></td>
+            <td>Dựng canvas giấy, ghim B-roll Polaroid, phụ đề Y=1620</td>
+            <td>Python Pillow + FFmpeg Pipe (>100 fps)</td>
+          </tr>
+          <tr>
+            <td><strong>5. Ghép Outro</strong></td>
+            <td>Nối 4s cuối với TalkToEarn_Outro_Chuan.jpg + Zoom 1.03</td>
+            <td>Ken Burns Engine + Music Fade</td>
+          </tr>
+          <tr>
+            <td><strong>6. Xuất Bản</strong></td>
+            <td>Video MP4 1080x1920 + Thumbnail 9:16 + Caption/Hashtags</td>
+            <td>Đóng gói bàn giao khâu cuối (Dual Delivery)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- MOBILE CARD LIST -->
+      <div class="pipeline-mobile-list">
+        <div class="pipeline-step-item">
+          <div class="pipeline-step-header">
+            <span class="pipeline-step-title">1. Chuẩn Bị Data</span>
+            <span class="pipeline-step-badge">Thủ công</span>
+          </div>
+          <p class="pipeline-step-desc">Nạp Script.txt + Voice.m4a + Video B-roll (tùy ý) + Ảnh chân dung vào folder.</p>
+        </div>
+
+        <div class="pipeline-step-item">
+          <div class="pipeline-step-header">
+            <span class="pipeline-step-title">2. Lọc Kịch Bản</span>
+            <span class="pipeline-step-badge">AI Sano + Fast-Track</span>
+          </div>
+          <p class="pipeline-step-desc">Ép câu ngắn dưới 35 chữ, bẫy lỗi âm Whisper, khử số liệu ảo và từ hù dọa.</p>
+        </div>
+
+        <div class="pipeline-step-item">
+          <div class="pipeline-step-header">
+            <span class="pipeline-step-title">3. Xử Lý Audio</span>
+            <span class="pipeline-step-badge">FFmpeg Auto</span>
+          </div>
+          <p class="pipeline-step-desc">Mute 100% tiếng B-roll, trộn BGM Piano volume 0.14 (normalize=0), fade-out 2.2s.</p>
+        </div>
+
+        <div class="pipeline-step-item">
+          <div class="pipeline-step-header">
+            <span class="pipeline-step-title">4. Render Video</span>
+            <span class="pipeline-step-badge">Python Engine</span>
+          </div>
+          <p class="pipeline-step-desc">Canvas giấy mộc, lồng B-roll khung Polaroid dán băng keo vàng, phụ đề Y=1620.</p>
+        </div>
+
+        <div class="pipeline-step-item">
+          <div class="pipeline-step-header">
+            <span class="pipeline-step-title">5. Ghép Outro</span>
+            <span class="pipeline-step-badge">Ken Burns Zoom</span>
+          </div>
+          <p class="pipeline-step-desc">Nối 4s cuối ảnh TalkToEarn_Outro_Chuan.jpg phóng to 1.00 -> 1.03 + vuốt tắt nhạc.</p>
+        </div>
+
+        <div class="pipeline-step-item">
+          <div class="pipeline-step-header">
+            <span class="pipeline-step-title">6. Xuất Bản</span>
+            <span class="pipeline-step-badge">Bộ Đôi Khâu Cuối</span>
+          </div>
+          <p class="pipeline-step-desc">Video MP4 (1080x1920) + Thumbnail dọc chữ vàng 3D + Kịch bản caption và bộ hashtag SEO.</p>
+        </div>
       </div>
 
-      <h4 style="font-size: 15px; margin: 24px 0 8px 0; color: #0f172a;">Lệnh Chạy Tự Động Hóa Trọn Gói (1-Click Pipeline):</h4>
+      <h4 style="font-size: 14.5px; margin: 20px 0 8px 0; color: #0f172a;">Lệnh Chạy Tự Động Hóa Trọn Gói (1-Click Pipeline):</h4>
       <div class="code-box">
         <button class="btn-copy" onclick="copyCode(this)">Copy Lệnh Render</button>
         <code>python3 render_with_outro.py --input_dir "./assets" --voice "voice.m4a" --script "script.txt" --outro "TalkToEarn_Outro_Chuan.jpg" --output "Video_VoxStyle_Final.mp4"</code>
@@ -1032,7 +1123,7 @@
   <!-- BOTTOM CONTROLLER (Sticky on Mobile) -->
   <div class="bottom-controller">
     <button class="ctrl-btn" id="prevBtn" onclick="prevPage()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
       Trang Trước
     </button>
 
@@ -1047,7 +1138,7 @@
 
     <button class="ctrl-btn" id="nextBtn" onclick="nextPage()">
       Trang Sau
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
     </button>
   </div>
 
@@ -1070,14 +1161,15 @@
       const currentSheet = document.getElementById('page' + currentPage);
       if (currentSheet) currentSheet.classList.add('active');
 
-      // Update tabs
+      // Update tabs and scroll ONLY the tab bar container
+      const navBar = document.getElementById('topNav');
       const tabs = document.querySelectorAll('.tab-btn');
       tabs.forEach((tab, index) => {
         if (index + 1 === currentPage) {
           tab.classList.add('active');
-          // Auto scroll tab into view on mobile
-          if (tab.scrollIntoView) {
-            tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          if (navBar) {
+            const scrollOffset = tab.offsetLeft - (navBar.clientWidth / 2) + (tab.clientWidth / 2);
+            navBar.scrollTo({ left: Math.max(0, scrollOffset), behavior: 'smooth' });
           }
         } else {
           tab.classList.remove('active');
@@ -1098,8 +1190,8 @@
       document.getElementById('prevBtn').disabled = (currentPage === 1);
       document.getElementById('nextBtn').disabled = (currentPage === totalPages);
 
-      // Smooth scroll back to top of viewport
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Scroll strictly to top of page without touching horizontal axis
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
     function goToPage(page) {
@@ -1151,8 +1243,7 @@
     function handleSwipeGesture() {
       const diffX = touchEndX - touchStartX;
       const diffY = touchEndY - touchStartY;
-      // Only trigger if horizontal swipe is prominent (> 45px and more horizontal than vertical)
-      if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
         if (diffX < 0) {
           nextPage(); // Swiped left -> Next
         } else {
